@@ -16,7 +16,13 @@ export const Route = createFileRoute("/industries")({
         property: "og:description",
         content: "Roof systems matched to how your facility actually operates.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "/industries" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Industries We Serve" },
+      { name: "twitter:description", content: "Roof systems matched to how your facility actually operates." },
     ],
+    links: [{ rel: "canonical", href: "/industries" }],
   }),
   component: IndustriesPage,
 });

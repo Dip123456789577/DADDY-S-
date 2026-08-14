@@ -20,7 +20,13 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "Talk to a project manager about your roof — response within one business day.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "/contact" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact Summit Commercial Roofing" },
+      { name: "twitter:description", content: "Talk to a project manager about your roof — response within one business day." },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
   component: ContactPage,
 });

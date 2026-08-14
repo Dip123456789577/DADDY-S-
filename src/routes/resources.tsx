@@ -44,7 +44,13 @@ export const Route = createFileRoute("/resources")({
         property: "og:description",
         content: "Practical guidance for facility directors managing commercial roof assets.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "/resources" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Commercial Roofing Resources" },
+      { name: "twitter:description", content: "Practical guidance for facility directors managing commercial roof assets." },
     ],
+    links: [{ rel: "canonical", href: "/resources" }],
   }),
   component: ResourcesPage,
 });
