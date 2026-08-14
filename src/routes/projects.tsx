@@ -16,7 +16,13 @@ export const Route = createFileRoute("/projects")({
         property: "og:description",
         content: "See recent commercial roof replacements, restorations and maintenance programs.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "/projects" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Commercial Roofing Projects" },
+      { name: "twitter:description", content: "See recent commercial roof replacements, restorations and maintenance programs." },
     ],
+    links: [{ rel: "canonical", href: "/projects" }],
   }),
   component: ProjectsPage,
 });

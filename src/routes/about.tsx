@@ -16,7 +16,13 @@ export const Route = createFileRoute("/about")({
         property: "og:description",
         content: "Certified crews, safety-first worksites, and 1,500+ completed commercial projects.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "/about" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "About Summit Commercial Roofing" },
+      { name: "twitter:description", content: "Certified crews, safety-first worksites, and 1,500+ completed commercial projects." },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });

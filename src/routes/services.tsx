@@ -16,7 +16,13 @@ export const Route = createFileRoute("/services")({
         property: "og:description",
         content: "Engineered roof systems installed by manufacturer-certified commercial crews.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "/services" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Commercial Roofing Services" },
+      { name: "twitter:description", content: "Engineered roof systems installed by manufacturer-certified commercial crews." },
     ],
+    links: [{ rel: "canonical", href: "/services" }],
   }),
   component: ServicesPage,
 });

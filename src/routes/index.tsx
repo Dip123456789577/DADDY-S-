@@ -28,7 +28,13 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Engineered commercial roof systems, warranty-backed and installed on schedule.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Summit Commercial Roofing" },
+      { name: "twitter:description", content: "Engineered commercial roof systems, warranty-backed and installed on schedule." },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
