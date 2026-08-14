@@ -464,7 +464,7 @@ export function Process() {
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
-  const t = TESTIMONIALS[index];
+  const t = TESTIMONIALS[index]!;
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-24">
