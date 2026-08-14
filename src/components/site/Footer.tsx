@@ -1,132 +1,150 @@
-import { Link } from "@tanstack/react-router";
-import { Clock, Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { COMPANY } from "@/lib/site-data";
 
-const SERVICE_LINKS = [
-  "Roof Replacement",
-  "Roof Repair",
-  "Maintenance",
-  "Roof Coatings",
-  "TPO",
-  "EPDM",
-  "Metal Roofing",
-];
-
-const COMPANY_LINKS = [
-  { label: "About", to: "/about" },
-  { label: "Projects", to: "/projects" },
-  { label: "Industries", to: "/industries" },
-  { label: "Resources", to: "/resources" },
-  { label: "Contact", to: "/contact" },
-] as const;
-
 export function Footer() {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-4">
-        <div>
-          <h3 className="font-display text-lg text-foreground">
-            Summit Commercial
-            <br />
-            Roofing
+    <footer className="border-t border-white/10 bg-background pt-16 pb-12 text-foreground">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-12">
+        {/* Brand Column */}
+        <div className="lg:col-span-4">
+          <h3 className="font-display text-xl font-bold tracking-tight text-foreground">
+            Summit Commercial <span className="text-primary">Roofing</span>
           </h3>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Commercial roofing built to last. Protecting offices, warehouses, and industrial
-            properties with engineered roof systems since 2001.
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            Edmonton's trusted commercial roofing partner. Protecting commercial properties through
+            professional craftsmanship, quality systems, and long-term service since 1984.
           </p>
-          <div className="mt-5 flex gap-2">
-            <a
-              href="https://www.linkedin.com"
-              aria-label="LinkedIn"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:text-primary"
-            >
-              <Linkedin size={15} />
-            </a>
-            <a
-              href="https://www.facebook.com"
-              aria-label="Facebook"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:text-primary"
-            >
-              <Facebook size={15} />
-            </a>
-          </div>
         </div>
 
-        <div>
-          <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Services
+        {/* Explore Links */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            EXPLORE
           </h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            {SERVICE_LINKS.map((s) => (
-              <li key={s}>
-                <Link
-                  to="/services"
-                  className="text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {s}
-                </Link>
-              </li>
-            ))}
+          <ul className="mt-5 space-y-3 text-sm">
+            <li>
+              <a
+                href="#services"
+                onClick={(e) => scrollToSection(e, "#services")}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="#portfolio"
+                onClick={(e) => scrollToSection(e, "#portfolio")}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Our Portfolio
+              </a>
+            </li>
+            <li>
+              <a
+                href="#process"
+                onClick={(e) => scrollToSection(e, "#process")}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                The Process
+              </a>
+            </li>
+            <li>
+              <a
+                href="#testimonials"
+                onClick={(e) => scrollToSection(e, "#testimonials")}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Client Reviews
+              </a>
+            </li>
           </ul>
         </div>
 
-        <div>
-          <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Company
+        {/* Contact Info */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            CONTACT US
           </h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            {COMPANY_LINKS.map((l) => (
-              <li key={l.to}>
-                <Link
-                  to={l.to}
-                  className="text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Contact
-          </h4>
-          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2">
-              <Phone size={14} className="text-primary" />
-              <a href={COMPANY.phoneHref} className="transition-colors hover:text-primary">
+          <ul className="mt-5 space-y-3.5 text-sm text-muted-foreground">
+            <li className="flex items-center gap-3">
+              <Phone size={15} className="text-primary" />
+              <a href={COMPANY.phoneHref} className="transition-colors hover:text-foreground">
                 {COMPANY.phone}
               </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Mail size={14} className="text-primary" />
-              <a href={`mailto:${COMPANY.email}`} className="transition-colors hover:text-primary">
+            <li className="flex items-center gap-3">
+              <Mail size={15} className="text-primary" />
+              <a href={`mailto:${COMPANY.email}`} className="transition-colors hover:text-foreground">
                 {COMPANY.email}
               </a>
             </li>
-            <li className="flex items-start gap-2">
-              <MapPin size={14} className="mt-0.5 text-primary" />
-              {COMPANY.office}
-            </li>
-            <li className="flex items-start gap-2">
-              <Clock size={14} className="mt-0.5 text-primary" />
-              {COMPANY.hours}
+            <li className="flex items-center gap-3">
+              <MapPin size={15} className="text-primary" />
+              <span>{COMPANY.office}</span>
             </li>
           </ul>
         </div>
+
+        {/* Connect / Socials */}
+        <div className="lg:col-span-2">
+          <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            CONNECT
+          </h4>
+          <div className="mt-5 flex gap-3">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground transition-all hover:border-primary hover:text-primary hover:scale-110"
+            >
+              <Instagram size={16} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground transition-all hover:border-primary hover:text-primary hover:scale-110"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground transition-all hover:border-primary hover:text-primary hover:scale-110"
+            >
+              <Facebook size={16} />
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Summit Commercial Roofing. All rights reserved.</p>
+      {/* Bottom Bar */}
+      <div className="mt-16 border-t border-white/10 pt-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-xs text-muted-foreground/70 sm:flex-row">
+          <p>© 2026 Summit Commercial Roofing. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="/resources" className="transition-colors hover:text-primary">
+            <a href="#privacy" className="transition-colors hover:text-foreground">
               Privacy Policy
-            </Link>
-            <Link to="/resources" className="transition-colors hover:text-primary">
-              Terms
-            </Link>
+            </a>
+            <a href="#terms" className="transition-colors hover:text-foreground">
+              Terms of Service
+            </a>
+            <a href="#cookies" className="transition-colors hover:text-foreground">
+              Cookie Policy
+            </a>
           </div>
         </div>
       </div>

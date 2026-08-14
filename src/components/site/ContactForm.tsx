@@ -2,28 +2,28 @@ import { useState, type FormEvent } from "react";
 import { Check } from "lucide-react";
 import { PROPERTY_TYPES, SERVICE_OPTIONS } from "@/lib/site-data";
 
-const field =
-  "w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
-const label = "text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground";
+const inputStyles =
+  "w-full rounded-lg border border-white/10 bg-background/80 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all";
+const labelStyles = "block text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-2";
 
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setSubmitted(true);
   }
 
-  if (sent) {
+  if (submitted) {
     return (
-      <div className="rounded-2xl border border-border bg-surface p-10 text-center shadow-card">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-          <Check size={22} />
+      <div className="rounded-2xl border border-white/10 bg-surface/90 p-8 md:p-10 text-center shadow-card backdrop-blur">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-glow">
+          <Check size={26} />
         </div>
-        <h3 className="mt-6 font-display text-2xl text-foreground">Request received</h3>
+        <h3 className="mt-6 font-display text-2xl text-foreground">Estimate Request Received</h3>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          A project manager will contact you within one business day to schedule your roof
-          inspection. For urgent leaks, call our 24/7 emergency line.
+          Thank you for reaching out. A Summit commercial roofing specialist will contact you within
+          24 hours to schedule your free on-site property inspection.
         </p>
       </div>
     );
@@ -31,100 +31,106 @@ export function ContactForm() {
 
   return (
     <form
-      onSubmit={onSubmit}
-      className="rounded-2xl border border-border bg-surface p-7 shadow-card md:p-9"
+      onSubmit={handleSubmit}
+      className="rounded-2xl border border-white/10 bg-surface/80 p-6 shadow-card backdrop-blur sm:p-8 md:p-9"
     >
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label className={label} htmlFor="name">
-            Full name
-          </label>
-          <input id="name" name="name" required className={`mt-2 ${field}`} placeholder="Jane Doe" />
-        </div>
-        <div>
-          <label className={label} htmlFor="company">
-            Company
-          </label>
-          <input id="company" name="company" className={`mt-2 ${field}`} placeholder="Company name" />
-        </div>
-        <div>
-          <label className={label} htmlFor="email">
-            Email
+          <label className={labelStyles} htmlFor="name">
+            Name
           </label>
           <input
-            id="email"
-            name="email"
-            type="email"
+            id="name"
+            name="name"
+            type="text"
             required
-            className={`mt-2 ${field}`}
-            placeholder="you@company.com"
+            className={inputStyles}
+            placeholder="John Doe"
           />
         </div>
+
         <div>
-          <label className={label} htmlFor="phone">
+          <label className={labelStyles} htmlFor="phone">
             Phone
           </label>
           <input
             id="phone"
             name="phone"
             type="tel"
-            className={`mt-2 ${field}`}
-            placeholder="(602) 555-0148"
+            required
+            className={inputStyles}
+            placeholder="780-000-0000"
           />
         </div>
-        <div>
-          <label className={label} htmlFor="property">
-            Property type
-          </label>
-          <select id="property" name="property" className={`mt-2 ${field}`} defaultValue="">
-            <option value="" disabled>
-              Select property type
-            </option>
-            {PROPERTY_TYPES.map((p) => (
-              <option key={p} value={p}>
-                {p}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className={label} htmlFor="service">
-            Service needed
-          </label>
-          <select id="service" name="service" className={`mt-2 ${field}`} defaultValue="">
-            <option value="" disabled>
-              Select a service
-            </option>
-            {SERVICE_OPTIONS.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
 
-      <div className="mt-5">
-        <label className={label} htmlFor="message">
-          Project details
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          className={`mt-2 ${field}`}
-          placeholder="Roof size, age, known issues, timeline…"
-        />
+        <div className="sm:col-span-2">
+          <label className={labelStyles} htmlFor="email">
+            Email Address
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className={inputStyles}
+            placeholder="john@company.com"
+          />
+        </div>
+
+        <div>
+          <label className={labelStyles} htmlFor="propertyType">
+            Property Type
+          </label>
+          <select
+            id="propertyType"
+            name="propertyType"
+            required
+            className={inputStyles}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Select Property Type
+            </option>
+            {PROPERTY_TYPES.map((type) => (
+              <option key={type} value={type} className="bg-surface text-foreground">
+                {type}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className={labelStyles} htmlFor="roofingService">
+            Roofing Service
+          </label>
+          <select
+            id="roofingService"
+            name="roofingService"
+            required
+            className={inputStyles}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Select Roofing Service
+            </option>
+            {SERVICE_OPTIONS.map((service) => (
+              <option key={service} value={service} className="bg-surface text-foreground">
+                {service}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <button
         type="submit"
-        className="mt-7 w-full rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:brightness-110"
+        className="mt-7 w-full rounded-xl bg-primary px-6 py-4 text-center text-sm font-bold tracking-wide uppercase text-primary-foreground shadow-glow transition hover:brightness-110 active:scale-[0.99]"
       >
-        Request Free Roof Inspection
+        Get My Free On-Site Estimate
       </button>
-      <p className="mt-3 text-center text-xs text-muted-foreground">
-        No obligation. We respond within one business day.
+
+      <p className="mt-4 text-center text-xs leading-relaxed text-muted-foreground/80">
+        By submitting, you agree to our terms of service and privacy policy regarding your contact information.
       </p>
     </form>
   );

@@ -26,7 +26,7 @@ export function BeforeAfter({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full touch-none select-none overflow-hidden rounded-xl border border-border bg-surface"
+      className="relative aspect-[4/3] w-full cursor-ew-resize touch-none select-none overflow-hidden rounded-2xl border border-white/10 bg-surface shadow-card"
       onPointerDown={(e) => {
         dragging.current = true;
         e.currentTarget.setPointerCapture(e.pointerId);
@@ -42,29 +42,36 @@ export function BeforeAfter({
         dragging.current = false;
       }}
     >
+      {/* After image (background layer) */}
       <img
         src={after}
         alt={afterAlt}
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
+      <span className="absolute right-4 top-4 z-10 rounded-md bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-foreground shadow-sm">
+        AFTER
+      </span>
+
+      {/* Before image (clipped top layer) */}
+      <div
+        className="absolute inset-0 h-full w-full"
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+      >
         <img
           src={before}
           alt={beforeAlt}
           loading="lazy"
-          className="absolute inset-0 h-full w-full max-w-none object-cover"
-          style={{ width: containerRef.current?.offsetWidth ?? "100%" }}
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <span className="absolute left-3 top-3 rounded-md bg-background/80 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-foreground backdrop-blur">
-          Before
+        <span className="absolute left-4 top-4 z-10 rounded-md bg-background/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-foreground backdrop-blur border border-white/10">
+          BEFORE
         </span>
       </div>
-      <span className="absolute right-3 top-3 rounded-md bg-primary/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary-foreground backdrop-blur">
-        After
-      </span>
+
+      {/* Slider handle divider */}
       <div
-        className="pointer-events-none absolute inset-y-0 w-0.5 bg-primary"
+        className="pointer-events-none absolute inset-y-0 z-20 w-0.5 bg-primary"
         style={{ left: `${pos}%` }}
       >
         <input
@@ -72,12 +79,21 @@ export function BeforeAfter({
           min={0}
           max={100}
           value={Math.round(pos)}
-          aria-label="Reveal the restored roof"
+          aria-label="Reveal before and after commercial roof comparison"
           onChange={(e) => setPos(Number(e.target.value))}
           className="sr-only"
         />
-        <div className="pointer-events-auto absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-background shadow-glow">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-primary" aria-hidden="true">
+        <div className="pointer-events-auto absolute left-1/2 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-background shadow-glow transition-transform hover:scale-110 active:scale-95">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="text-primary"
+            aria-hidden="true"
+          >
             <path d="M8 6l-4 6 4 6M16 6l4 6-4 6" />
           </svg>
         </div>

@@ -682,15 +682,6 @@ Reference first. Analyze first. Then build.
 
 The finished website should look like the reference website's commercial roofing version, not like a completely new design.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/01662d7e-791d-4599-83d7-0c13a528f024).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 

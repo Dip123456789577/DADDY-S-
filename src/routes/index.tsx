@@ -1,38 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  About,
-  FinalCta,
+  Consultation,
   Hero,
-  Industries,
+  Portfolio,
   Process,
-  Projects,
   Services,
   Stats,
   Testimonials,
   Transformation,
   TrustBar,
-  WhyUs,
 } from "@/components/site/sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Summit Commercial Roofing | Commercial Roofing Built to Last" },
+      { title: "Summit Commercial Roofing | Premium Commercial Roofing in Edmonton, AB" },
       {
         name: "description",
         content:
-          "Commercial roof replacement, repair, coatings, TPO and EPDM systems for offices, warehouses and industrial properties. 25+ years, 1,500+ projects.",
+          "Edmonton's trusted commercial roofing partner since 1984. Roof replacement, repair, preventive maintenance, and roof coatings backed by a 20-year workmanship warranty.",
       },
       { property: "og:title", content: "Summit Commercial Roofing" },
       {
         property: "og:description",
-        content: "Engineered commercial roof systems, warranty-backed and installed on schedule.",
+        content:
+          "40+ years of craftsmanship. Professional commercial roofing systems built for long-term performance.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Summit Commercial Roofing" },
-      { name: "twitter:description", content: "Engineered commercial roof systems, warranty-backed and installed on schedule." },
+      {
+        name: "twitter:description",
+        content:
+          "40+ years of craftsmanship. Professional commercial roofing systems built for long-term performance.",
+      },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -44,16 +46,13 @@ function Index() {
     <>
       <Hero />
       <TrustBar />
-      <Stats />
-      <About />
-      <Services limit={6} />
+      <Services />
+      <Portfolio />
       <Transformation />
-      <Industries />
-      <Projects limit={3} />
-      <WhyUs />
       <Process />
       <Testimonials />
-      <FinalCta />
+      <Stats />
+      <Consultation />
     </>
   );
 }

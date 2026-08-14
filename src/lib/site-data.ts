@@ -15,226 +15,265 @@ import indHealthcare from "@/assets/ind-healthcare.jpg";
 import indMultifamily from "@/assets/ind-multifamily.jpg";
 import indGovernment from "@/assets/ind-government.jpg";
 
+export { indOffice, indWarehouse, indRetail, indIndustrial, indSchool, indHealthcare, indMultifamily, indGovernment };
+
 export const COMPANY = {
   name: "Summit Commercial Roofing",
-  tagline: "Commercial Roofing Built to Last.",
-  phone: "(602) 555-0148",
-  phoneHref: "tel:+16025550148",
-  email: "estimates@summitcommercialroofing.com",
-  office: "4820 W Industrial Pkwy, Phoenix, AZ 85043",
-  hours: "Mon – Fri, 7:00am – 5:00pm · 24/7 Emergency Response",
+  established: 1984,
+  location: "Edmonton, AB",
+  tagline: "Premium commercial roofing solutions built for long-term performance.",
+  phone: "780-555-0123",
+  phoneHref: "tel:+17805550123",
+  email: "hello@summitcommercialroofing.ca",
+  office: "Edmonton, AB",
+  hours: "Mon – Fri: 7:00 AM – 5:00 PM | 24/7 Emergency Service",
 };
 
 export const NAV = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
-  { label: "Projects", to: "/projects" },
-  { label: "Industries", to: "/industries" },
-  { label: "Resources", to: "/resources" },
-  { label: "Contact", to: "/contact" },
+  { label: "Services", to: "/#services" },
+  { label: "Portfolio", to: "/#portfolio" },
+  { label: "Process", to: "/#process" },
+  { label: "Testimonials", to: "/#testimonials" },
 ] as const;
 
 export const SERVICES = [
   {
     slug: "roof-replacement",
     title: "Commercial Roof Replacement",
-    blurb: "Complete replacement systems designed for long-term performance.",
+    blurb: "Complete roof replacement systems engineered for extreme weather resilience and decades of worry-free operation.",
     image: svcReplacement,
-    points: ["Full tear-off & recover", "Engineered assemblies", "Warranty-backed systems"],
+    points: [
+      "Complete Roof Systems",
+      "Tear-Off & Installation",
+      "Manufacturer Warranties",
+    ],
   },
   {
     slug: "roof-repair",
     title: "Commercial Roof Repair",
-    blurb: "Professional repairs for leaks, storm damage, and roofing failures.",
+    blurb: "Precision leak detection and rapid repairs for storm damage, seam failures, and structural vulnerabilities.",
     image: svcRepair,
-    points: ["Leak diagnostics", "Storm damage repair", "Flashing & seam work"],
+    points: [
+      "Leak Detection",
+      "Storm Damage",
+      "Emergency Repairs",
+    ],
   },
   {
     slug: "maintenance",
-    title: "Roof Maintenance",
-    blurb: "Preventive maintenance programs that extend roof life.",
+    title: "Preventive Roof Maintenance",
+    blurb: "Proactive inspection programs that identify issues early, prevent costly downtime, and double roof lifespan.",
     image: svcMaintenance,
-    points: ["Biannual inspections", "Infrared moisture scans", "Documented reporting"],
+    points: [
+      "Scheduled Inspections",
+      "Drain & Flashing Care",
+      "Roof-Life Extension",
+    ],
   },
   {
     slug: "coatings",
-    title: "Roof Coatings",
-    blurb: "Protective coating systems that improve durability and waterproofing.",
+    title: "Roof Coatings & Restoration",
+    blurb: "Seamless fluid-applied waterproof coatings that restore existing roofs at a fraction of full replacement cost.",
     image: svcCoating,
-    points: ["Silicone & acrylic", "Reflective cool roofs", "Restoration warranties"],
-  },
-  {
-    slug: "tpo",
-    title: "TPO Roofing",
-    blurb: "Energy-efficient single-ply roofing systems.",
-    image: svcTpo,
-    points: ["Heat-welded seams", "Cool-roof rated", "60 & 80 mil membranes"],
-  },
-  {
-    slug: "epdm",
-    title: "EPDM Roofing",
-    blurb: "Durable membrane roofing for commercial buildings.",
-    image: svcEpdm,
-    points: ["Ballasted & adhered", "Proven longevity", "Cold-climate performance"],
-  },
-  {
-    slug: "metal",
-    title: "Metal Roofing",
-    blurb: "Long-lasting roofing systems for demanding environments.",
-    image: svcMetal,
-    points: ["Standing seam", "Retrofit framing", "Industrial-grade finishes"],
-  },
-  {
-    slug: "emergency",
-    title: "Emergency Roofing",
-    blurb: "Fast response for urgent commercial roofing problems.",
-    image: svcEmergency,
-    points: ["24/7 dispatch", "Temporary dry-in", "Insurance documentation"],
+    points: [
+      "Waterproof Coatings",
+      "Energy Efficiency",
+      "System Restoration",
+    ],
   },
 ];
 
-export const INDUSTRIES = [
-  { title: "Office Buildings", image: indOffice, note: "Class A & multi-tenant" },
-  { title: "Warehouses", image: indWarehouse, note: "Large-span distribution" },
-  { title: "Retail Centers", image: indRetail, note: "Occupied-hours scheduling" },
-  { title: "Industrial Facilities", image: indIndustrial, note: "Chemical & heat resistant" },
-  { title: "Schools", image: indSchool, note: "Summer-window delivery" },
-  { title: "Healthcare", image: indHealthcare, note: "Infection-control protocols" },
-  { title: "Multifamily", image: indMultifamily, note: "Resident-safe worksites" },
-  { title: "Government Buildings", image: indGovernment, note: "Prevailing wage & bonded" },
-];
-
-export const PROJECTS = [
+export const TRANSFORMATIONS = [
   {
-    title: "Corporate Office Roof Replacement",
-    type: "Office Building",
-    location: "Scottsdale, AZ",
-    description:
-      "84,000 sq ft mechanically attached TPO replacement completed over weekends to keep tenants operating.",
-    image: indOffice,
+    id: "project-01",
+    tag: "PROJECT 01",
+    title: "Downtown Office Roof Restoration",
+    beforeText: "Aged commercial roof with visible deterioration.",
+    afterText: "Fully restored commercial roofing system with clean detailing.",
+    beforeImage: "@/assets/before-1.jpg",
+    afterImage: "@/assets/after-1.jpg",
   },
   {
-    title: "Industrial Facility Restoration",
-    type: "Industrial Facility",
-    location: "Tolleson, AZ",
-    description:
-      "Silicone restoration over an aging metal deck, eliminating chronic leaks without production downtime.",
-    image: indIndustrial,
-  },
-  {
-    title: "Retail Center Roofing Upgrade",
-    type: "Retail Property",
-    location: "Chandler, AZ",
-    description:
-      "Twelve-tenant center re-roofed in phased sections with new drainage and full curb flashing rebuilds.",
-    image: indRetail,
-  },
-  {
-    title: "Distribution Warehouse Roof Replacement",
-    type: "Warehouse",
-    location: "Goodyear, AZ",
-    description:
-      "310,000 sq ft tear-off and 80 mil TPO install with upgraded insulation to hit new energy targets.",
-    image: indWarehouse,
-  },
-  {
-    title: "Multifamily Roof Restoration",
-    type: "Multifamily Property",
-    location: "Mesa, AZ",
-    description:
-      "Nine residential buildings restored with reflective coatings while every unit stayed occupied.",
-    image: indMultifamily,
-  },
-  {
-    title: "Commercial Roof Maintenance Program",
-    type: "Healthcare Campus",
-    location: "Tempe, AZ",
-    description:
-      "Five-year preventive maintenance agreement covering 14 roof sections with infrared moisture surveys.",
-    image: indHealthcare,
-  },
-];
-
-export const WHY_US = [
-  { title: "25+ Years of Experience", copy: "A quarter century of commercial-only roofing work." },
-  { title: "Certified Roofing Professionals", copy: "Manufacturer-certified crews on every project." },
-  { title: "Premium Materials", copy: "Specification-grade systems from proven manufacturers." },
-  { title: "Safety-First Worksites", copy: "OSHA-compliant plans and daily site audits." },
-  { title: "Transparent Estimates", copy: "Line-item scopes with no surprise change orders." },
-  { title: "Dedicated Project Management", copy: "One point of contact from survey to closeout." },
-  { title: "Long-Term Warranties", copy: "Up to 30-year manufacturer and workmanship coverage." },
-  { title: "Reliable Scheduling", copy: "Milestone dates we publish, track, and hit." },
-];
-
-export const PROCESS = [
-  { step: "01", title: "Inspect", copy: "Complete professional roof inspection." },
-  { step: "02", title: "Assess", copy: "Identify problems and determine the best solution." },
-  { step: "03", title: "Propose", copy: "Provide a clear and detailed proposal." },
-  { step: "04", title: "Install", copy: "Complete the roofing project safely and professionally." },
-  { step: "05", title: "Protect", copy: "Provide maintenance and long-term support." },
-];
-
-export const TESTIMONIALS = [
-  {
-    quote:
-      "Summit Commercial Roofing made our roof replacement simple from start to finish. Their team was professional, organized, and kept us informed throughout the entire project.",
-    name: "Daniel Reyes",
-    role: "Facilities Director",
-    company: "Meridian Office Group",
-    rating: 5,
-  },
-  {
-    quote:
-      "They re-roofed 310,000 square feet over our peak season without costing us a single hour of shipping. The coordination was genuinely impressive.",
-    name: "Alicia Moore",
-    role: "Regional Operations Manager",
-    company: "Cardinal Distribution",
-    rating: 5,
-  },
-  {
-    quote:
-      "We had chronic leaks for years. Summit found the real cause, documented everything, and the restoration has been watertight through two monsoon seasons.",
-    name: "Peter Nowak",
-    role: "Plant Engineer",
-    company: "Foundry West Manufacturing",
-    rating: 5,
-  },
-  {
-    quote:
-      "Their maintenance program pays for itself. We finally have a roof budget we can forecast instead of emergency invoices.",
-    name: "Sandra Ellis",
-    role: "Property Manager",
-    company: "Northline Retail Partners",
-    rating: 5,
+    id: "project-02",
+    tag: "PROJECT 02",
+    title: "Industrial Facility Roof Replacement",
+    beforeText: "Worn and weather-damaged industrial roof.",
+    afterText: "Modern high-performance commercial roofing system.",
+    beforeImage: "@/assets/before-2.jpg",
+    afterImage: "@/assets/after-2.jpg",
   },
 ];
 
 export const STATS = [
-  { value: 25, suffix: "+", label: "Years of Experience" },
-  { value: 1500, suffix: "+", label: "Commercial Projects" },
-  { value: 20, suffix: "M+", label: "Square Feet Installed" },
-  { value: 24, suffix: "/7", label: "Emergency Service" },
+  { value: 40, suffix: "+", label: "Years in Edmonton" },
+  { value: 1500, suffix: "+", label: "Projects Delivered" },
+  { value: 20, suffix: "yr", label: "Workmanship Warranty" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
 ];
 
 export const PROPERTY_TYPES = [
   "Office Building",
-  "Warehouse / Distribution",
-  "Retail Property",
-  "Industrial Facility",
-  "School / Education",
-  "Healthcare Facility",
-  "Multifamily Property",
-  "Government Facility",
+  "Warehouse",
+  "Retail",
+  "Industrial",
+  "Multifamily",
+  "Other",
 ];
 
 export const SERVICE_OPTIONS = [
   "Roof Replacement",
   "Roof Repair",
-  "Roof Inspection",
-  "Preventive Maintenance",
+  "Maintenance",
   "Roof Coating",
-  "TPO / EPDM System",
-  "Metal Roofing",
   "Emergency Service",
+];
+
+export const CONSULTATION_FEATURES = [
+  {
+    title: "Fast Response",
+    description: "On-site assessments scheduled within 48 hours of inquiry.",
+  },
+  {
+    title: "Professional Assessment",
+    description: "Detailed inspection and roofing recommendations from experienced specialists.",
+  },
+  {
+    title: "Transparent Proposal",
+    description: "Clear project pricing with no unnecessary surprises.",
+  },
+];
+
+export const TRUST_POINTS = [
+  "20-Year Workmanship Warranty",
+  "No Surprise Pricing",
+  "40+ Years Local Experience & A+ BBB",
+];
+
+export const INDUSTRIES = [
+  {
+    slug: "office",
+    title: "Office Buildings",
+    image: indOffice,
+    points: ["Flat & Low-Slope Systems", "HVAC Integration", "Minimal Disruption"],
+  },
+  {
+    slug: "warehouse",
+    title: "Warehouses & Distribution",
+    image: indWarehouse,
+    points: ["Metal Roof Systems", "Spray-Foam Insulation", "Rapid Installation"],
+  },
+  {
+    slug: "retail",
+    title: "Retail & Mixed-Use",
+    image: indRetail,
+    points: ["Aesthetic Roof Design", "Energy-Efficient Systems", "Code Compliance"],
+  },
+  {
+    slug: "industrial",
+    title: "Industrial Facilities",
+    image: indIndustrial,
+    points: ["Heavy-Duty Membranes", "Chemical Resistance", "Structural Support"],
+  },
+  {
+    slug: "school",
+    title: "Schools & Institutions",
+    image: indSchool,
+    points: ["Safe Work Protocols", "Budget-Aligned Scopes", "Scheduled Shutdowns"],
+  },
+  {
+    slug: "healthcare",
+    title: "Healthcare Facilities",
+    image: indHealthcare,
+    points: ["Infection Control", "24/7 Access Plans", "Noise Management"],
+  },
+  {
+    slug: "multifamily",
+    title: "Multifamily Residential",
+    image: indMultifamily,
+    points: ["Tenant-Safe Methods", "Phased Scheduling", "Long-Term Warranties"],
+  },
+  {
+    slug: "government",
+    title: "Government & Municipal",
+    image: indGovernment,
+    points: ["Certified Contractors", "Compliance Documentation", "Bid-Ready Proposals"],
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    step: "01",
+    title: "Free Roof Assessment",
+    description:
+      "Our roofing specialists conduct a thorough on-site inspection within 48 hours. We document every issue — no obligation, no pressure.",
+  },
+  {
+    step: "02",
+    title: "Transparent Proposal",
+    description:
+      "You receive a clear, itemized proposal with fixed pricing. No surprises, no hidden fees. We explain every line before you sign.",
+  },
+  {
+    step: "03",
+    title: "Professional Installation",
+    description:
+      "Our certified crews execute the project with precision, using manufacturer-approved materials and strict safety protocols throughout.",
+  },
+  {
+    step: "04",
+    title: "Final Inspection & Warranty",
+    description:
+      "We conduct a comprehensive quality walkthrough with you before handing over your 20-year workmanship warranty documentation.",
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    id: "t1",
+    quote:
+      "Summit replaced the membrane across our entire 80,000 sq. ft. facility on schedule and under budget. The crew was professional, safe, and the quality speaks for itself.",
+    author: "David K.",
+    role: "Facilities Manager, Industrial Corp.",
+    rating: 5,
+  },
+  {
+    id: "t2",
+    quote:
+      "We've used Summit for preventive maintenance on three of our office properties for six years. Zero leaks, zero surprises — just reliable craftsmanship every single year.",
+    author: "Sarah M.",
+    role: "Property Manager, Meridian Properties",
+    rating: 5,
+  },
+  {
+    id: "t3",
+    quote:
+      "After storm damage compromised our school's roof, Summit mobilized within 24 hours. The emergency repair was thorough and they minimized disruption to our students entirely.",
+    author: "Principal T. Olsen",
+    role: "Edmonton Catholic School District",
+    rating: 5,
+  },
+  {
+    id: "t4",
+    quote:
+      "The TPO system Summit installed on our retail plaza cut our energy costs by 18%. Their recommendation was exactly right — and the installation quality is second to none.",
+    author: "Mark R.",
+    role: "Owner, Westpark Retail Plaza",
+    rating: 5,
+  },
+  {
+    id: "t5",
+    quote:
+      "Summit's team treated our healthcare facility with the utmost professionalism. Work zones were sealed off, noise was managed, and they completed the project three days early.",
+    author: "Operations Director",
+    role: "Edmonton Regional Health Centre",
+    rating: 5,
+  },
+  {
+    id: "t6",
+    quote:
+      "The 20-year warranty was the deciding factor for us, but the outstanding workmanship sealed the deal. Best commercial roofing investment we've made in 15 years.",
+    author: "Linda H.",
+    role: "VP Operations, Sterling Group",
+    rating: 5,
+  },
 ];

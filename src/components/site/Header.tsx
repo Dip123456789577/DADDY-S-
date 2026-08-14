@@ -2,101 +2,112 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { NAV } from "@/lib/site-data";
+
+const NAV_ITEMS = [
+  { label: "Services", href: "#services" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Process", href: "#process" },
+  { label: "Testimonials", href: "#testimonials" },
+];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled || open
-          ? "border-b border-border bg-background/90 backdrop-blur"
-          : "border-b border-transparent bg-transparent",
+        scrolled || mobileMenuOpen
+          ? "border-b border-white/10 bg-background/90 backdrop-blur-md shadow-lg"
+          : "border-b border-white/5 bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Link
           to="/"
-          className="text-[11px] font-semibold uppercase leading-tight tracking-[0.2em] text-foreground"
+          className="group flex flex-col text-left font-display text-sm font-bold uppercase tracking-[0.18em] text-foreground transition-opacity hover:opacity-90 md:text-base"
         >
-          Summit Commercial
-          <br className="hidden sm:inline" />
-          <span className="sm:hidden"> </span>Roofing
+          <span>Summit Commercial</span>
+          <span className="text-[11px] font-semibold tracking-[0.22em] text-primary">Roofing</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
-          {NAV.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={cn(
-                "group relative text-sm font-medium transition-colors hover:text-foreground",
-                pathname === item.to ? "text-foreground" : "text-muted-foreground",
-              )}
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-8 lg:flex">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
+              className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-foreground"
             >
               {item.label}
-              <span
-                className={cn(
-                  "absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 group-hover:w-full",
-                  pathname === item.to ? "w-full" : "w-0",
-                )}
-              />
-            </Link>
+            </a>
           ))}
         </nav>
 
-        <Link
-          to="/contact"
-          className="hidden rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow transition hover:brightness-110 lg:inline-flex"
+        {/* Desktop CTA */}
+        <a
+          href="#consultation"
+          onClick={(e) => scrollToSection(e, "#consultation")}
+          className="hidden rounded-xl bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-glow transition hover:brightness-110 active:scale-95 lg:inline-flex"
         >
-          Get a Free Estimate
-        </Link>
+          Request Free Estimate
+        </a>
 
+        {/* Mobile Menu Toggle */}
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="rounded-md p-2 text-foreground lg:hidden"
+          onClick={() => setMobileMenuOpen((prev) => !prev)}
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          className="rounded-lg p-2 text-foreground transition hover:bg-white/5 lg:hidden"
         >
-          {open ? <Menu className="hidden" size={20} /> : null}
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            {NAV.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="rounded-md px-2 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="border-t border-white/10 bg-background/95 backdrop-blur-lg lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
+                className="rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground transition hover:bg-surface hover:text-foreground"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
-            <Link
-              to="/contact"
-              className="mt-2 rounded-md bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground"
+            <a
+              href="#consultation"
+              onClick={(e) => scrollToSection(e, "#consultation")}
+              className="mt-4 rounded-xl bg-primary px-5 py-3 text-center text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-glow"
             >
-              Get a Free Estimate
-            </Link>
+              Request Free Estimate
+            </a>
           </nav>
         </div>
       )}
