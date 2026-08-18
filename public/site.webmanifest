@@ -1,0 +1,21 @@
+{
+  "name": "Summit Commercial Roofing",
+  "short_name": "Summit Roofing",
+  "description": "Edmonton's trusted commercial roofing contractor. Quality TPO, EPDM, metal and flat roofing systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f17",
+  "theme_color": "#d97706",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -81,13 +81,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "theme-color", content: "#0b0f17" },
       { title: "Summit Commercial Roofing | Commercial Roofing Built to Last" },
       { name: "description", content: "Commercial roof replacement, repair, coatings, TPO and EPDM systems for offices, warehouses and industrial properties." },
       { name: "author", content: "Summit Commercial Roofing" },
-      { property: "og:title", content: "Summit Commercial Roofing" },
+      { property: "og:title", content: "Summit Commercial Roofing | Commercial Roofing Built to Last" },
       { property: "og:description", content: "Engineered commercial roof systems, warranty-backed and installed on schedule." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/icon-512.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Summit Commercial Roofing" },
+      { name: "twitter:description", content: "Engineered commercial roof systems, warranty-backed and installed on schedule." },
+      { name: "twitter:image", content: "/icon-512.png" },
     ],
     links: [
       {
@@ -95,8 +100,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
-      { rel: "apple-touch-icon", href: "/favicon.svg" },
+      { rel: "alternate icon", href: "/favicon.ico", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
